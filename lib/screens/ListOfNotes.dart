@@ -8,8 +8,10 @@ class ScreenListOfNotes extends StatefulWidget {
 class _ScreenListOfNotesState extends State<ScreenListOfNotes> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Biji'),
+      ),
     );
   }
 }
