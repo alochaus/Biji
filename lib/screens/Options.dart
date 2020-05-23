@@ -5,7 +5,9 @@ class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: bijiAppBar(),
+      appBar: BijiAppBar(
+        title: 'Options',
+      ),
     );
   }
 }

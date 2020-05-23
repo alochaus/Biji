@@ -11,7 +11,9 @@ class _ListOfNotesState extends State<ListOfNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: bijiAppBar(context: context),
+      appBar: BijiAppBar(
+        context: context,
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.edit),
         onPressed: () {

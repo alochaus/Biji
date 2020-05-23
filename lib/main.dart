@@ -1,5 +1,5 @@
 import 'package:biji/screens/ListOfNotes.dart';
-import 'package:biji/theme/theme.dart';
+import 'package:biji/theme/Theme.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Biji());
