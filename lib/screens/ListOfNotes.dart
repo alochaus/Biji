@@ -1,4 +1,5 @@
 import 'package:biji/components/BijiAppBar.dart';
+import 'package:biji/models/Note.dart';
 import 'package:biji/screens/CreateNote.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,13 @@ class ListOfNotes extends StatefulWidget {
 }
 
 class _ListOfNotesState extends State<ListOfNotes> {
+  final List<Note> notes = List<Note>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: BijiAppBar(
         context: context,
       ),
@@ -18,6 +23,22 @@ class _ListOfNotesState extends State<ListOfNotes> {
         child: Icon(Icons.edit),
         onPressed: () {
           final Future<dynamic> future = pushCreateNote(context);
+          future.then((note) {
+            if (note.isValid()) {
+              setState(() {
+                notes.add(note);
+              });
+              scaffoldKey.currentState.showSnackBar(SnackBar(
+                content: Text('Note successfully created!'),
+                duration: Duration(seconds: 1, milliseconds: 500),
+              ));
+            } else if (!note.isValid()) {
+              scaffoldKey.currentState.showSnackBar(SnackBar(
+                content: Text('Note discarded.'),
+                duration: Duration(seconds: 1, milliseconds: 500),
+              ));
+            }
+          });
         },
       ),
     );

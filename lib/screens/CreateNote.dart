@@ -1,5 +1,6 @@
 import 'package:biji/components/BijiAppBar.dart';
 import 'package:biji/components/InputField.dart';
+import 'package:biji/models/Note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,22 +17,38 @@ class CreateNote extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            displayTitle(),
-            displayContent(),
+            titleInput(),
+            contentInput(),
+            submitButton(context),
           ],
         ),
       ),
     );
   }
 
-  InputField displayTitle() => InputField(
+  Padding submitButton(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(0, 7.0, 0, 7.0),
+        child: RaisedButton(
+          onPressed: () {
+            if (title != null && content != null) {
+              final Note note = Note(title.toString(), content.toString());
+              Navigator.pop(context, note);
+            } else {
+              Navigator.pop(context);
+            }
+          },
+          child: Text('Submit'),
+        ),
+      );
+
+  InputField titleInput() => InputField(
         controller: title,
         label: 'Title',
         hint: 'Title',
         inputType: TextInputType.text,
       );
 
-  InputField displayContent() => InputField(
+  InputField contentInput() => InputField(
         controller: content,
         label: 'Content',
         hint: 'Content',

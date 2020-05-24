@@ -11,15 +11,16 @@ class InputField extends StatelessWidget {
   final int minLines;
   final bool border;
 
-  InputField(
-      {@required this.controller,
-      this.icon,
-      this.label,
-      this.hint,
-      this.maxLines = 1,
-      this.minLines,
-      @required this.inputType,
-      this.border = true});
+  InputField({
+    @required this.controller,
+    this.icon,
+    this.label,
+    this.hint,
+    this.maxLines = 1,
+    this.minLines,
+    @required this.inputType,
+    this.border = true,
+  });
 
   @override
   Widget build(BuildContext context) {
