@@ -9,35 +9,42 @@ class InputField extends StatelessWidget {
   final TextInputType inputType;
   final int maxLines;
   final int minLines;
-  final bool expands;
+  final bool border;
 
-  InputField({
-    @required this.controller,
-    this.icon,
-    this.label,
-    this.hint,
-    this.maxLines,
-    this.minLines,
-    this.expands = false,
-    @required this.inputType,
-  });
+  InputField(
+      {@required this.controller,
+      this.icon,
+      this.label,
+      this.hint,
+      this.maxLines = 1,
+      this.minLines,
+      @required this.inputType,
+      this.border = true});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.fromLTRB(
+        15.0,
+        2.5,
+        15.0,
+        0.0,
+      ),
       child: TextField(
         controller: controller,
-        style: TextStyle(fontSize: 15.0),
+        style: TextStyle(fontSize: 25.0),
         decoration: InputDecoration(
           icon: icon != null ? Icon(icon) : null,
           labelText: label ?? null,
           hintText: hint ?? null,
+          border: border ? null : InputBorder.none,
+          enabledBorder: border ? null : InputBorder.none,
+          errorBorder: border ? null : InputBorder.none,
+          disabledBorder: border ? null : InputBorder.none,
         ),
         keyboardType: inputType,
-        maxLines: maxLines,
         minLines: minLines,
-        expands: expands,
+        maxLines: maxLines,
       ),
     );
   }

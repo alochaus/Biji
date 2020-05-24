@@ -36,6 +36,7 @@ class CreateNote extends StatelessWidget {
         label: 'Content',
         hint: 'Content',
         inputType: TextInputType.multiline,
-        expands: false,
+        maxLines: null,
+        border: false,
       );
 }
