@@ -31,7 +31,10 @@ class CreateNote extends StatelessWidget {
         child: RaisedButton(
           onPressed: () {
             if (title != null && content != null) {
-              final Note note = Note(title.toString(), content.toString());
+              final Note note = Note(
+                title: title.text,
+                content: content.text,
+              );
               Navigator.pop(context, note);
             } else {
               Navigator.pop(context);

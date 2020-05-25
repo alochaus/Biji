@@ -1,4 +1,5 @@
 import 'package:biji/components/BijiAppBar.dart';
+import 'package:biji/components/NoteContainer.dart';
 import 'package:biji/models/Note.dart';
 import 'package:biji/screens/CreateNote.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,18 @@ class _ListOfNotesState extends State<ListOfNotes> {
           });
         },
       ),
+      body: ListView.builder(
+        itemCount: notes.length,
+        itemBuilder: (context, index) {
+          final Note note = notes[index];
+          return NoteContainer(note: note);
+        },
+      ),
     );
   }
+  
+  Future<dynamic> pushCreateNote(context) =>
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return CreateNote();
+      }));
 }
-
-Future<dynamic> pushCreateNote(context) =>
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return CreateNote();
-    }));
