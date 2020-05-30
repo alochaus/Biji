@@ -20,8 +20,8 @@ class NoteContainer extends StatelessWidget {
           note.getTitle(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25.0,
+            color: Colors.white,
+            fontSize: 22.0,
           ),
         ),
       ),

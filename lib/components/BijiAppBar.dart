@@ -18,6 +18,7 @@ class BijiAppBar extends StatelessWidget with PreferredSizeWidget {
         style: TextStyle(fontSize: 25.0),
         textAlign: TextAlign.center,
       ),
+      centerTitle: true,
       actions: (context != null)
           ? <Widget>[
               displayOptionsButton(),

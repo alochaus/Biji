@@ -40,7 +40,10 @@ class CreateNote extends StatelessWidget {
               Navigator.pop(context);
             }
           },
-          child: Text('Submit'),
+          child: Text(
+            'Submit',
+            style: TextStyle(color: Theme.of(context).canvasColor),
+          ),
         ),
       );
 

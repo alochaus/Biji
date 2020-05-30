@@ -33,7 +33,10 @@ class InputField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
-        style: TextStyle(fontSize: 25.0),
+        style: TextStyle(
+          fontSize: 25.0,
+          color: Colors.white,
+        ),
         decoration: InputDecoration(
           icon: icon != null ? Icon(icon) : null,
           labelText: label ?? null,

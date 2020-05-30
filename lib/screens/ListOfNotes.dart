@@ -29,15 +29,13 @@ class _ListOfNotesState extends State<ListOfNotes> {
               setState(() {
                 notes.add(note);
               });
-              scaffoldKey.currentState.showSnackBar(SnackBar(
-                content: Text('Note successfully created!'),
-                duration: Duration(seconds: 1, milliseconds: 500),
-              ));
+              scaffoldKey.currentState.showSnackBar(
+                snackBar('Note successfully created!'),
+              );
             } else if (!note.isValid()) {
-              scaffoldKey.currentState.showSnackBar(SnackBar(
-                content: Text('Note discarded.'),
-                duration: Duration(seconds: 1, milliseconds: 500),
-              ));
+              scaffoldKey.currentState.showSnackBar(
+                snackBar('Note discarded.'),
+              );
             }
           });
         },
@@ -51,7 +49,12 @@ class _ListOfNotesState extends State<ListOfNotes> {
       ),
     );
   }
-  
+
+  SnackBar snackBar(String text) => SnackBar(
+        content: Text(text),
+        duration: Duration(seconds: 1, milliseconds: 500),
+      );
+
   Future<dynamic> pushCreateNote(context) =>
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return CreateNote();
