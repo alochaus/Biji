@@ -1,6 +1,6 @@
 import 'package:biji/components/BijiAppBar.dart';
 import 'package:biji/components/InputField.dart';
-import 'package:biji/models/Note.dart';
+import 'package:biji/components/SubmitButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,39 +13,19 @@ class CreateNote extends StatelessWidget {
     return Scaffold(
       appBar: BijiAppBar(
         title: 'New Note',
+        displayButton: true,
+        button: SubmitButton(title: title, content: content),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             titleInput(),
             contentInput(),
-            submitButton(context),
           ],
         ),
       ),
     );
   }
-
-  Padding submitButton(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(0, 7.0, 0, 7.0),
-        child: RaisedButton(
-          onPressed: () {
-            if (title != null && content != null) {
-              final Note note = Note(
-                title: title.text,
-                content: content.text,
-              );
-              Navigator.pop(context, note);
-            } else {
-              Navigator.pop(context);
-            }
-          },
-          child: Text(
-            'Submit',
-            style: TextStyle(color: Theme.of(context).canvasColor),
-          ),
-        ),
-      );
 
   InputField titleInput() => InputField(
         controller: title,

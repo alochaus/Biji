@@ -1,13 +1,14 @@
-import 'package:biji/screens/Options.dart';
 import 'package:flutter/material.dart';
 
 class BijiAppBar extends StatelessWidget with PreferredSizeWidget {
-  final BuildContext context;
   final String title;
+  final Widget button;
+  final bool displayButton;
 
   BijiAppBar({
-    this.context,
     this.title,
+    this.button,
+    this.displayButton = false,
   });
 
   @override
@@ -19,22 +20,9 @@ class BijiAppBar extends StatelessWidget with PreferredSizeWidget {
         textAlign: TextAlign.center,
       ),
       centerTitle: true,
-      actions: (context != null)
-          ? <Widget>[
-              displayOptionsButton(),
-            ]
-          : null,
+      actions: displayButton ? <Widget>[button] : null,
     );
   }
-
-  IconButton displayOptionsButton() => IconButton(
-        icon: Icon(Icons.more_vert),
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Options();
-          }));
-        },
-      );
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);

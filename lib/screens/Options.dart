@@ -7,6 +7,7 @@ class Options extends StatelessWidget {
     return Scaffold(
       appBar: BijiAppBar(
         title: 'Options',
+        displayButton: false,
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:biji/components/BijiAppBar.dart';
 import 'package:biji/components/NoteContainer.dart';
+import 'package:biji/components/OptionsButton.dart';
 import 'package:biji/models/Note.dart';
 import 'package:biji/screens/CreateNote.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class _ListOfNotesState extends State<ListOfNotes> {
     return Scaffold(
       key: scaffoldKey,
       appBar: BijiAppBar(
-        context: context,
+        displayButton: true,
+        button: OptionsButton(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.edit),
